@@ -1,39 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>Book Sorter</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        html, body, h1, h2, h3, h4, h5, h6 {
-            font-family: "Roboto", sans-serif;
-        }
-
-        .sidebar {
-            z-index: 3;
-            width: 250px;
-            top: 43px;
-            bottom: 0;
-            height: inherit;
-            color: pink;
-        }
-    </style>
 </head>
 <body>
-
-    <!-- sidebar -->
-    <nav class="sidebar bar-block collapse large theme-l5 animate-left" id="mySidebar">
-        <a href="javascript:void(0)" onclick="close()" class="right xlarge padding-large hover-black hide-large" title="Close Menu">
-            <i class="fa fa-remove"></i>
-        </a>
-        <h4 class="bar-item"><b>Sidebar</b></h4>
-        <a class="bar-item button hover-black" href="#">Night/Day mode</a>
-        <a class="bar-item button hover-black" href="#">Add book</a>
-        <a class="bar-item button hover-black" href="#">Change font size</a>
-    </nav>
-
-    <!-- handling small screens -->
-    <div class="overlay hide-large" onclick="close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
     <!-- opening the sidebar and shifting the content 250px to the right -->
     <div class="main" style="margin-left:250px">
@@ -51,7 +21,7 @@
 
 
         <div class="row">
-            <div class="twothird w3-container">
+            <div class="twothird container">
                 <p>
                     In the world of books, some quotes become really popular and are used every day, touching new lives all the time. These special lines stand out because they're meaningful and easy to remember. They make us think, feel inspired, or comfort us. As people keep sharing these quotes, they get new meanings and keep influencing new people in simple but powerful ways.
                 </p>
@@ -74,33 +44,8 @@
             </p>
         </footer>
 
-        <!-- END MAIN -->
     </div>
 
-    <script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
-
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
-  }
-}
-
-// Close the sidebar with the close button
-function close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-}
-    </script>
 
 </body>
 </html>
