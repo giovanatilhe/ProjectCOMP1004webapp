@@ -7,14 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Program.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Program.css" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="wwwroot\img\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\js\" />
