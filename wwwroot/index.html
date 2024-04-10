@@ -18,9 +18,9 @@
         /* Sidebar styling */
         .sidebar {
             width: 20%; /* Sidebar takes 20% of the container width */
-            background-color: cornflowerblue;
-            height: 100vh; 
-            padding: 20px; 
+            background-color: #E4DDD8;
+            height: 100vh;
+            padding: 20px;
         }
 
         /* Main content styling */
@@ -35,23 +35,32 @@
     <!-- sidebar -->
     <div class="sidebar">
         <h2>Explore :)</h2>
-        <p>Day/Night mode<label class="switch"> <input style="background-color: pink" type="button"> </label></p>
+        <p>Day/Night mode<label class="switch"> <input style="background-color: #F6D6D8" type="button"> </label></p>
         <p>Add book <button type="submit"><img src="https://banner2.cleanpng.com/20190624/ue/kisspng-clip-art-portable-network-graphics-vector-graphics-5d104fdf262fb8.8993319315613501111564.jpg" height="15" width="15" /></button></p>
         <p>Change font size</p>
-        <button style="background-color: lightpink" type="button">&nbsp; + &nbsp; </button> <button style="background-color: lightpink" type="button">&nbsp;-&nbsp;  </button>
+        <button style="background-color: #F6D6D8" type="button">&nbsp; + &nbsp; </button> <button style="background-color: #F6D6D8" type="button">&nbsp;-&nbsp;  </button>
     </div>
 
     <!-- main website -->
     <div class="main">
-        <h1 style="text-decoration-color: hotpink"><center>Book Sorting </center></h1>
+        <h1 style="text-decoration-color: hotpink"><center>☆ Book Sorting ☆ </center></h1>
         
-        <h2 style="background-color: pink">Literature</h2>
+        <h2 style="background-color: #F6D6D8">Literature</h2>
         <p>Welcome to Book Sorting, a straightforward solution for organizing your books. Our site offers easy sorting by genre, author, or personal ratings. Ideal for those seeking a more presentable way of displaying your book collection.</p>
         <p>In the world of books, some quotes become really popular and are used every day, touching new lives all the time. These special lines stand out because they're meaningful and easy to remember. They make us think, feel inspired, or comfort us. As people keep sharing these quotes, they get new meanings and keep influencing new people in simple but powerful ways.</p>
         
-        <h2 style="background-color: pink">Filtering:</h2>
+        <h2 style="background-color: #F6D6D8">Filtering:</h2>
         <p>This is where you can choose the filters to look for specific books in your collections</p>
-        <button onclick="toggleDropdown"> </button>
+        <select>
+            <option>  </option>
+            <option> author </option>
+            <option> alphabetically </option>
+            <option> date read (recent to oldest)</option>
+            <option> date read (oldest to newest)</option>
+            <option> rated (better to worst) </option>
+            <option> rated (worst to better </option>
+
+        </select>
 
         <footer>
             <p>Giovana Fonseca - book sorting 2023/24</p>
