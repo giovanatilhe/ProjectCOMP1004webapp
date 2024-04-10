@@ -2,49 +2,58 @@
 <html>
 <head>
     <title>Book Sorter</title>
+    <style>
+        body, div, h1, p, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Container styling */
+        .container {
+            width: 100%; /* Full width of the viewport */
+            display: flex; /* Flexbox layout for the children */
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 20%; /* Sidebar takes 20% of the container width */
+            background-color: cornflowerblue;
+            height: 100vh; /* Full viewport height */
+            padding: 20px; /* Padding around the content */
+        }
+
+        /* Main content styling */
+        .main {
+            width: 80%; /* Main content takes the remaining 80% of the container width */
+            padding: 20px; /* Padding around the content */
+        }
+    </style>
 </head>
 <body>
+<div class="container">
     <!-- sidebar -->
-    <div id="mySidebar" class="sidebar">
-        <h1> Explore </h1>
-        <p> Night mode<label class="switch"> <input type="button"> </label></p>
-        
-        <p> Add book <button type="submit"> <img src="https://banner2.cleanpng.com/20190624/ue/kisspng-clip-art-portable-network-graphics-vector-graphics-5d104fdf262fb8.8993319315613501111564.jpg" border="0" height="30" width="30" /> </button> </p> 
-        <p> Change font size</p>
-        <button style="background-color: lightpink" type="button"> + </button> <button style="background-color: lightpink" type="button"> - </button>
+    <div class="sidebar">
+        <h2>Explore :)</h2>
+        <p>Day/Night mode<label class="switch"> <input style="background-color: pink" type="button"> </label></p>
+        <p>Add book <button type="submit"><img src="https://banner2.cleanpng.com/20190624/ue/kisspng-clip-art-portable-network-graphics-vector-graphics-5d104fdf262fb8.8993319315613501111564.jpg" height="15" width="15" /></button></p>
+        <p>Change font size</p>
+        <button style="background-color: lightpink" type="button">&nbsp; + &nbsp; </button> <button style="background-color: lightpink" type="button">&nbsp;-&nbsp;  </button>
     </div>
 
-    <!-- opening the sidebar and shifting the content 250px to the right -->
-    <div class="main" style="margin-left:250px">
-
-        <div>
-            <h1 style="background-color: pink">Books</h1>
-            <p>
-                Welcome to Book Sorting, a straightforward solution for organizing your books. Our site offers easy sorting by genre, author, or personal ratings. Ideal for those seeking a more presentable way of displaying your book collection.
-            </p>
-        </div>
-
-        <div class="row">
-            <p>
-                In the world of books, some quotes become really popular and are used every day, touching new lives all the time. These special lines stand out because they're meaningful and easy to remember. They make us think, feel inspired, or comfort us. As people keep sharing these quotes, they get new meanings and keep influencing new people in simple but powerful ways.
-            </p>
-        </div>
-
-        <div class="row padding-64">
-            <h1 style="background-color: pink">Filtering:</h1>
-            <p>
-                This is where you can choose the filters to look for specific books in your collections
-            </p>
-        </div>
-
+    <!-- main website -->
+    <div class="main">
+        <h1 style="text-decoration-color: hotpink"><center>Book Sorting </center></h1>
+        <h2 style="background-color: pink">Literature</h2>
+        <p>Welcome to Book Sorting, a straightforward solution for organizing your books. Our site offers easy sorting by genre, author, or personal ratings. Ideal for those seeking a more presentable way of displaying your book collection.</p>
+        <p>In the world of books, some quotes become really popular and are used every day, touching new lives all the time. These special lines stand out because they're meaningful and easy to remember. They make us think, feel inspired, or comfort us. As people keep sharing these quotes, they get new meanings and keep influencing new people in simple but powerful ways.</p>
+        <h2 style="background-color: pink">Filtering:</h2>
+        <p>This is where you can choose the filters to look for specific books in your collections</p>
         <footer>
-            <p>
-                Giovana Fonseca - book sorting 2023/24
-            </p>
+            <p>Giovana Fonseca - book sorting 2023/24</p>
         </footer>
-
     </div>
-
-
+</div>
 </body>
 </html>
+
