@@ -18,3 +18,13 @@ document.getElementById('bookData').addEventListener('click', function () {
     hiddenElement.download = 'bookData.json';
     hiddenElement.click();
 });
+
+let cont = document.getElementById("container");
+function changeSizeByBtn(size) {
+    cont.style.fontSize = size;
+}
+function changeSizeBySlider() {
+    let slider = document.getElementById("slider");
+    // Set slider value as fontSize
+    cont.style.fontSize = slider.value + "px";
+}

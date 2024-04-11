@@ -31,19 +31,23 @@
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container"; font-size: 20px; id="container">
     <!-- sidebar -->
     <div class="sidebar">
         <h2> Menu :)</h2>
         <p> Day/Night mode <input style="background-color: #F6D6D8" type="button"> </p>
 
-        <button id="bookData" value="Add book" style="background-color: #F6D6D8"></input>
+        <input id="bookData" type="button" value="Add book" style="background-color: #F6D6D8"></input>
         <script src="js/java.js"></script>
 
 
         <p> Change font size</p>
 
-        <button style="background-color: #F6D6D8" type="button">&nbsp; + &nbsp; </button> <button style="background-color: #F6D6D8" type="button">&nbsp;-&nbsp;  </button>
+        <button style="background-color: #F6D6D8" type="button" name="btn1" onclick="changeSizeByBtn('20px')">&nbsp; + &nbsp; </button>
+        <button style="background-color: #F6D6D8" type="button" name="btn1" onclick="changeSizeByBtn('16px')">&nbsp; A &nbsp; </button>
+        <button style="background-color: #F6D6D8" type="button" name="btn2" onclick="changeSizeByBtn('10px')">&nbsp; - &nbsp; </button>
+        <input type="range" min="10" max="30" id="slider" value="20" onchange="changeSizeBySlider()" />
+
         <p> Colour blind settings <input style="background-color: #F6D6D8" type="button"> </p>
     </div>
 
