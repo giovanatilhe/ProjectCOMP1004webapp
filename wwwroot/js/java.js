@@ -1,3 +1,4 @@
+//donwloading json file button
 var dataToSave = {
     "book_title": "Enter book title",
     "author": "Enter author's name",
@@ -18,13 +19,20 @@ document.getElementById('bookData').addEventListener('click', function () {
     hiddenElement.download = 'bookData.json';
     hiddenElement.click();
 });
-
+// font size button
 let cont = document.getElementById("container");
 function changeSizeByBtn(size) {
     cont.style.fontSize = size;
 }
 function changeSizeBySlider() {
     let slider = document.getElementById("slider");
-    // Set slider value as fontSize
     cont.style.fontSize = slider.value + "px";
+}
+
+
+//night day button
+const htmlEl = document.getElementsByTagName('html')[0];
+
+const toggleTheme = (theme) => {
+    htmlEl.dataset.theme = theme;
 }

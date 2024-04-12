@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data- theme="light">
 <head>
     <title>Book Sorter</title>
     <style>
@@ -9,13 +9,11 @@
             box-sizing: border-box;
         }
 
-        /* Container styling */
         .container {
             width: 100%; 
             display: flex; 
         }
 
-        /* Sidebar styling */
         .sidebar {
             width: 20%; /* Sidebar takes 20% of the width */
             background-color: #E4DDD8;
@@ -31,11 +29,16 @@
     </style>
 </head>
 <body>
-<div class="container"; font-size: 20px; id="container">
+<div class="container"; id="container">
     <!-- sidebar -->
     <div class="sidebar">
         <h2> Menu :)</h2>
-        <p> Day / Night mode <input style="background-color: #F6D6D8" type="button"> </p>
+
+        <button onclick="toggleTheme('dark');">Dark Mode Test</button>
+
+        <button onclick="toggleTheme('light');">Light Mode Test</button>
+
+
 
         <input id="bookData" type="button" value="Add book" style="background-color: #F6D6D8"></input>
         <script src="js/java.js"></script>
@@ -48,7 +51,6 @@
         <button style="background-color: #F6D6D8" type="button" name="btn2" onclick="changeSizeByBtn('20px')">&nbsp; + &nbsp; </button>
         <input type="range" min="1" max="40" id="slider" value="20" onchange="changeSizeBySlider()" />
 
-        <p> Colour blind settings <input style="background-color: #F6D6D8" type="button"> </p>
     </div>
 
     <!-- main website -->

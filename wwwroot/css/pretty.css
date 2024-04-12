@@ -1,2 +1,11 @@
-﻿body {
+﻿html {
+    transition: color 300ms, background-color 300ms !important;
+}
+html[data-theme='dark'] {
+    background: #000;
+    filter: invert(1) hue-rotate(180deg)
+}
+
+html[data-theme='dark'] img {
+    filter: invert(1) hue-rotate(180deg)
 }
