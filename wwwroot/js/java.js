@@ -38,32 +38,25 @@ const toggleTheme = (theme) => {
 }
 
 // reading json file 
-document.getElementById("read-json").addEventListener('change', function (event) {
-    if (event.target.files.length === 0) {
-        console.log('no file selected');
-        return;
-    }
+const json = document.getElementById("read-json");
+function file_reading() {
+    if (json.files && jason.files[0]) {
+        const file = json.files[0];
+        const reader = new FileReader();
 
-    var file = event.target.files[0];
-
-    if (file.tyype !== "application/json") {
-        console.log('Please upload a json file.');
-        return;
-    }
-
-    var reader = new FileReader();
-    reader.onload = function (event) {
-        try {
-            var jsonObj = JSON.parse(event.target.result); // Convert the file content to a JSON object
-            console.log(jsonObj); // Output the JSON object to the console
-        } catch (e) {
-            console.error('Invalid JSON file');
+        reader.onload = function (e) {
+            try {
+                const data = JSON.parse(e.target.result);
+                console.log(data);  // Here you can now use your JSON data
+                // You can call any function here to process your data further
+            } catch (error) {
+                console.error('Error parsing JSON!', error);
+            }
         }
-    };
-    reader.onerror = function () {
-        console.error('File could not be read!');
-    };
-    reader.readAsText(file); // Read the file as text
+        reader.readAsText(file);  // Read the file as text
+        document.write(works!)
 
-
-});
+    } else {
+        alert('Please select a file.');
+    }
+}
