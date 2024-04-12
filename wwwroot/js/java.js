@@ -38,25 +38,6 @@ const toggleTheme = (theme) => {
 }
 
 // reading json file 
-const json = document.getElementById("read-json");
 function file_reading() {
-    if (json.files && jason.files[0]) {
-        const file = json.files[0];
-        const reader = new FileReader();
-
-        reader.onload = function (e) {
-            try {
-                const data = JSON.parse(e.target.result);
-                console.log(data);  // Here you can now use your JSON data
-                // You can call any function here to process your data further
-            } catch (error) {
-                console.error('Error parsing JSON!', error);
-            }
-        }
-        reader.readAsText(file);  // Read the file as text
-        document.write(works!)
-
-    } else {
-        alert('Please select a file.');
-    }
+    //read file turn it into string then send it do div book
 }
