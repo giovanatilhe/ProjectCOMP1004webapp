@@ -2,7 +2,7 @@
     transition: color 300ms, background-color 300ms !important;
 }
 html[data-theme='dark'] {
-    background: #000;
+    background: #000 ;
     filter: invert(1) hue-rotate(180deg)
 }
 

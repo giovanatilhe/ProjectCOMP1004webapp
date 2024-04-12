@@ -36,3 +36,34 @@ const htmlEl = document.getElementsByTagName('html')[0];
 const toggleTheme = (theme) => {
     htmlEl.dataset.theme = theme;
 }
+
+// reading json file 
+document.getElementById("read-json").addEventListener('change', function (event) {
+    if (event.target.files.length === 0) {
+        console.log('no file selected');
+        return;
+    }
+
+    var file = event.target.files[0];
+
+    if (file.tyype !== "application/json") {
+        console.log('Please upload a json file.');
+        return;
+    }
+
+    var reader = new FileReader();
+    reader.onload = function (event) {
+        try {
+            var jsonObj = JSON.parse(event.target.result); // Convert the file content to a JSON object
+            console.log(jsonObj); // Output the JSON object to the console
+        } catch (e) {
+            console.error('Invalid JSON file');
+        }
+    };
+    reader.onerror = function () {
+        console.error('File could not be read!');
+    };
+    reader.readAsText(file); // Read the file as text
+
+
+});
