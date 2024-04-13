@@ -39,5 +39,20 @@ const toggleTheme = (theme) => {
 
 // reading json file 
 function file_reading() {
-    //read file turn it into string then send it do div book
+    document.getElementById('json_button').addEventListener('click', function () {
+        const form = document.getElementById("read-json");
+        const formData = new FormData(form);
+        const book = document.getElementById("book");
+    })
+    fetch('/submit-url', {
+        method: 'POST',
+        body: formData,
+    })
+        .then(response => response.text()) // Assuming the server responds with text/html
+        .then(data => {
+            resultDiv.innerHTML = data; // Update the div with the response
+        })
+        .catch(error => {
+            resultDiv.innerHTML = 'Error: ' + error; // Display error message in the div
+        });
 }
