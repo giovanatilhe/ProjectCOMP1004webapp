@@ -12,7 +12,7 @@ var dataToSave = {
 };
 
 document.getElementById('bookData').addEventListener('click', function () {
-    var jsonstring = JSON.stringify(dataToSave);
+    var jsonstring = JSON.stringify(dataToSave, null, 4);
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(jsonstring);
     hiddenElement.target = '_blank';
@@ -38,21 +38,19 @@ const toggleTheme = (theme) => {
 }
 
 // reading json file 
-function file_reading() {
-    document.getElementById('json_button').addEventListener('click', function () {
-        const form = document.getElementById("read-json");
-        const formData = new FormData(form);
-        const book = document.getElementById("book");
-    })
-    fetch('/submit-url', {
-        method: 'POST',
-        body: formData,
-    })
-        .then(response => response.text()) // Assuming the server responds with text/html
-        .then(data => {
-            resultDiv.innerHTML = data; // Update the div with the response
-        })
-        .catch(error => {
-            resultDiv.innerHTML = 'Error: ' + error; // Display error message in the div
-        });
+function reading_file() { 
+function init() {
+    document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+}
+
+function handleFileSelect(event) {
+    const reader = new FileReader()
+    reader.onload = handleFileLoad;
+    reader.readAsText(event.target.files[0])
+}
+
+function handleFileLoad(event) {
+    console.log(event);
+    document.getElementById('fileContent').textContent = event.target.result;
+}
 }

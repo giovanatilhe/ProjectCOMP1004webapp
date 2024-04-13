@@ -31,7 +31,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="init()">
 <div class="container"; id="container">
     <!-- sidebar -->
     <div class="sidebar">
@@ -46,17 +46,17 @@
 
         <p>
             Download json file template to add a book:
-            <input id="bookData" type="button" style="background-color: #F6D6D8"></input>
+            <input id="bookData" type="button" style="background-color: #F6D6D8"/>
         </p>
 
         <p>
             JSON file filled out here:
         </p>
-        <form id="read-json" action="index.html">
-            <input type="file" accept="json" multiple="multiple" />
-            <input id="json_button"style="background-color: #F6D6D8" type="button" value="upload file(s)" onclick="file_reading()"/>
-        </form>
 
+        <form id="book_form" method="POST" action="/uploads/">
+            <input type="file" accept="json" multiple="multiple" id="fileInput" />
+            <input id="bookFile" style="background-color: #F6D6D8" type="button" value="upload file(s)" />
+        </form>
 
             <p> Change font size</p>
 
@@ -117,10 +117,9 @@
             <option> rated: ☆</option>
         </select>
 
-        <div id=" book">
 
-        </div>
 
+        <pre id="fileContent"></pre>
 
         <footer>
             <p>Giovana Fonseca - book sorting 2023/24</p>
