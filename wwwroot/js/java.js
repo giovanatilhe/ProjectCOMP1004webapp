@@ -38,7 +38,7 @@ const toggleTheme = (theme) => {
 }
 
 // reading json file 
-function reading_file() { 
+
 function init() {
     document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
 }
@@ -52,5 +52,4 @@ function handleFileSelect(event) {
 function handleFileLoad(event) {
     console.log(event);
     document.getElementById('fileContent').textContent = event.target.result;
-}
 }
