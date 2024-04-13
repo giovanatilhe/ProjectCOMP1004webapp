@@ -12,7 +12,7 @@ var dataToSave = {
 };
 
 document.getElementById('bookData').addEventListener('click', function () {
-    var jsonstring = JSON.stringify(dataToSave, null, 4);
+    var jsonstring = JSON.stringify(dataToSave);
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(jsonstring);
     hiddenElement.target = '_blank';
