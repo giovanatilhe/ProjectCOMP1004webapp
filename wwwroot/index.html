@@ -29,31 +29,43 @@
             width: 80%; /* Main content takes the remaining 80% of the width */
             padding: 20px; /* Padding around the content */
         }
+
+        .bookBox {
+            border: solid 5px grey;
+            background-color: #E4DDD8;
+            height: 300px;
+            width: 90%;
+            padding: 50px;
+            margin: 20px;
+        }
+
     </style>
 </head>
 <body onload="init()">
-<div class="container"; id="container">
-    <!-- sidebar -->
-    <div class="sidebar">
-        <h2> Menu :)</h2>
+
+    <div class="container" ; id="container">
+        <!-- sidebar -->
+        <div class="sidebar">
+            <h2> Menu :)</h2>
 
 
-        <p>
-            Night / Day theme
-            <button onclick="toggleTheme('dark');" style="background-color: #F6D6D8">&nbsp;☾&nbsp; </button>
-            <button onclick="toggleTheme('light');" style="background-color: #F6D6D8">&nbsp; ☀︎ &nbsp;</button>
-        </p>
+            <p>
+                Night / Day theme
+                <button onclick="toggleTheme('dark');" style="background-color: #F6D6D8">&nbsp;☾&nbsp; </button>
+                <button onclick="toggleTheme('light');" style="background-color: #F6D6D8">&nbsp; ☀︎ &nbsp;</button>
+            </p>
 
-        <p>
-            Download json file template to add a book:
-            <input id="bookData" type="button" style="background-color: #F6D6D8"/>
-        </p>
+            <p>
+                Download json file template to add a book:
+                <input id="bookData" type="button" style="background-color: #F6D6D8" onclick="displayFormattedJSON" />
+            </p>
 
-        <p>
-            JSON file filled out here:
-        </p>
+            <p>
+                JSON file filled out here:
+                <input type="file" accept="json" id="fileInput" />
+                <button id="import"style="background-color: #F6D6D8" type="button" onclick="handleFileLoad()"> click here to save the book to local storage! </button>
+            </p>
 
-            <input type="file" accept="json" multiple="multiple" id="fileInput" />
 
             <p> Change font size</p>
 
@@ -63,66 +75,67 @@
             <input type="range" min="1" max="40" id="slider" value="20" onchange="changeSizeBySlider()" />
 
             <script src="js/java.js"></script>
+        </div>
+
+        <!-- main website -->
+        <div class="main">
+            <center><h1 style="text-decoration-color: hotpink">☆ Book Sorting ☆ </h1></center>
+
+            <h2 style="background-color: #F6D6D8">Literature</h2>
+            <p>Welcome to Book Sorting, a straightforward solution for organizing your books. Our site offers easy sorting by genre, author, or personal ratings. Ideal for those seeking a more presentable way of displaying your book collection.</p>
+            <p>In the world of books, some quotes become really popular and are used every day, touching new lives all the time. These special lines stand out because they're meaningful and easy to remember. They make us think, feel inspired, or comfort us. As people keep sharing these quotes, they get new meanings and keep influencing new people in simple but powerful ways. And the best way to find them is while reading</p>
+            <center><h3><b>"There is no friend as loyal as a book" - Ernest Hemingway</b></h3></center>
+
+
+            <h2 style="background-color: #F6D6D8">Filtering:</h2>
+            <p>This is where you can choose the filters to look for specific books in your collections</p>
+            <input type="text" placeholder="Search..." />
+            <select>
+                <option> all books (no filter) </option>
+                <option> author </option>
+                <option> alphabetically </option>
+                <option> date read (recent to oldest)</option>
+                <option> date read (oldest to newest)</option>
+                <option> rated (better to worst) </option>
+                <option> rated (worst to better </option>
+                <option> science fiction </option>
+                <option> romance </option>
+                <option> thriller </option>
+                <option> mystery </option>
+                <option> adventure </option>
+                <option> young adult </option>
+                <option> fantasy </option>
+                <option> dystopian </option>
+                <option> horror </option>
+                <option> biography </option>
+                <option> self-help </option>
+                <option> history </option>
+                <option> businees & money </option>
+                <option> read </option>
+                <option> want to read </option>
+                <option> english </option>
+                <option> spanish </option>
+                <option> german </option>
+                <option> french </option>
+                <option> portuguese </option>
+                <option> mandarin </option>
+                <option> rated: ☆☆☆☆☆</option>
+                <option> rated: ☆☆☆☆</option>
+                <option> rated: ☆☆☆</option>
+                <option> rated: ☆☆</option>
+                <option> rated: ☆</option>
+            </select>
+
+            <input style="background-color: #F6D6D8" type="button" onclick="showData()" value="Show all the books that have been uploaded"/>
+            <div class="bookBox" style="width: 100%" id="fileContent" >
+                
+            </div>
+
+            <footer>
+                <p>Giovana Fonseca - book sorting 2023/24</p>
+            </footer>
+        </div>
     </div>
-
-    <!-- main website -->
-    <div class="main">
-        <center><h1 style="text-decoration-color: hotpink">☆ Book Sorting ☆ </h1></center>
-
-        <h2 style="background-color: #F6D6D8">Literature</h2>
-        <p>Welcome to Book Sorting, a straightforward solution for organizing your books. Our site offers easy sorting by genre, author, or personal ratings. Ideal for those seeking a more presentable way of displaying your book collection.</p>
-        <p>In the world of books, some quotes become really popular and are used every day, touching new lives all the time. These special lines stand out because they're meaningful and easy to remember. They make us think, feel inspired, or comfort us. As people keep sharing these quotes, they get new meanings and keep influencing new people in simple but powerful ways. And the best way to find them is while reading</p>
-        <center><h3><b>"There is no friend as loyal as a book" - Ernest Hemingway</b></h3></center>
-
-
-        <h2 style="background-color: #F6D6D8">Filtering:</h2>
-        <p>This is where you can choose the filters to look for specific books in your collections</p>
-        <input type="text" placeholder="Search..." />
-        <select>
-            <option> all books (no filter) </option>
-            <option> author </option>
-            <option> alphabetically </option>
-            <option> date read (recent to oldest)</option>
-            <option> date read (oldest to newest)</option>
-            <option> rated (better to worst) </option>
-            <option> rated (worst to better </option>
-            <option> science fiction </option>
-            <option> romance </option>
-            <option> thriller </option>
-            <option> mystery </option>
-            <option> adventure </option>
-            <option> young adult </option>
-            <option> fantasy </option>
-            <option> dystopian </option>
-            <option> horror </option>
-            <option> biography </option>
-            <option> self-help </option>
-            <option> history </option>
-            <option> businees & money </option>
-            <option> read </option>
-            <option> want to read </option>
-            <option> english </option>
-            <option> spanish </option>
-            <option> german </option>
-            <option> french </option>
-            <option> portuguese </option>
-            <option> mandarin </option>
-            <option> rated: ☆☆☆☆☆</option>
-            <option> rated: ☆☆☆☆</option>
-            <option> rated: ☆☆☆</option>
-            <option> rated: ☆☆</option>
-            <option> rated: ☆</option>
-        </select>
-
-
-
-        <pre id="fileContent"></pre>
-
-        <footer>
-            <p>Giovana Fonseca - book sorting 2023/24</p>
-        </footer>
-    </div>
-</div>
 </body>
 </html>
 

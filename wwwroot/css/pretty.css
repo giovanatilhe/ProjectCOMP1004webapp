@@ -9,3 +9,7 @@ html[data-theme='dark'] {
 html[data-theme='dark'] img {
     filter: invert(1) hue-rotate(180deg)
 }
+
+#fileContent {
+    width: 100%;
+}
