@@ -35,7 +35,7 @@
             background-color: #E4DDD8;
             height: 300px;
             width: 90%;
-            padding: 50px;
+            padding: 10px;
             margin: 20px;
         }
 
@@ -126,9 +126,11 @@
                 <option> rated: ☆</option>
             </select>
 
-            <input style="background-color: #F6D6D8" type="button" onclick="showData()" value="Show all the books that have been uploaded"/>
-            <div class="bookBox" style="width: 100%" id="fileContent" >
-                
+            <input style="background-color: #F6D6D8" type="button" onclick="showData()" value="Show all the books that have been uploaded" />
+            <input style="background-color: #F6D6D8" type="button" onclick="clearData()" value="Click here to clear the display" />
+
+            <div class="bookBox" id="bookBox" style="width: 100%" id="fileContent">
+
             </div>
 
             <footer>

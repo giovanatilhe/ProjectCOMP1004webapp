@@ -52,7 +52,7 @@ let dataBook;
 function handleFileLoad(event) {
 
     const fileContent = event.target.result;
-    document.getElementById('fileContent').textContent = fileContent;
+    document.getElementById('bookBox').textContent = fileContent;
     dataBook = fileContent;
     console.log("dataBook", dataBook);
 }
@@ -72,14 +72,22 @@ function saveFile() {
     }
 }
 
-function showdata() {
+function showData() {
     var values = [],
         keys = Object.keys(localStorage),
         i = keys.length;
-
-    while (i--) {
-        values.push(localStorage.getItem(keys[i]));
+    if (i == 0) {
+        alert('There is nothing in the local storage')
+    } else if (i > 0) {
+        while (i--) {
+            values.push('book',i + 1,':');
+            values.push(localStorage.getItem(keys[i]));
+            values.push('\n')
+        }
+        document.getElementById('bookBox').textContent = values;
     }
+}
 
-    return values;
+function clearData() {
+    document.getElementById('bookBox').textContent = '';
 }
