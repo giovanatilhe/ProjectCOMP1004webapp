@@ -43,6 +43,7 @@ function init() {
 }
 
 function handleFileSelect(event) {
+
     const reader = new FileReader()
     reader.onload = handleFileLoad;
     reader.readAsText(event.target.files[0])
@@ -56,18 +57,25 @@ function handleFileLoad(event) {
     dataBook = fileContent;
     console.log("dataBook", dataBook);
 }
-
+//saving data to local storage
+const bookNameArray = [];
 function saveFile() {
     console.log(dataBook)
-    var bookName = ' book ' + (localStorage.length + 1);
+    var bookName = prompt("Please write the name of the book so it can be organised and retrieved easily")
+    var length = bookName.length + 1;
+    for (let i = 0; 1 < length; i++) {
+        if (bookNameArray[i] === null) {
+            bookNameArray[i] = bookName;
+        }
+    }
     localStorage.setItem(bookName, dataBook);
     if (localStorage.getItem(bookName)) {
-        alert('Book succesfully added to local storage as:' + bookName);
+        alert('Book successfully added to local storage as:' + bookName);
     } else {
         alert('Error saving book.');
     }
 }
-
+//displaying data from local storage
 function showData() {
     var bookInfo = [],
         books = Object.keys(localStorage),
@@ -84,11 +92,11 @@ function showData() {
         document.getElementById('bookBox').innerHTML = bookInfo.join('');
     }
 }
-
+//clearing display
 function clearData() {
     document.getElementById('bookBox').textContent = '';
 }
-
+//deleting everything from local storage
 function deleteData(){
     if (confirm('Are you sure you want to delete everything saved in your local storage?')) {
         localStorage.clear();
@@ -103,34 +111,34 @@ function deleteData(){
         alert("Action canceled, Local storage preserved!");
     }
 }
+//deleting one book from local storage
 function deleteBook() {
-    var deletebook = prompt('Which book would you like to delete?');
-    if (!deletebook) {
-        alert("No book name entered.");
+    for (let i = 0; i < bookNameArray.length; i++) {
+        const displayBook =+ bookNameArray[i] + ',';
     }
-    var before = localStorage.length;
+    var deletebook = prompt('Which book would you like to delete?');
+
+var before = localStorage.length;
     var deadbook = "\"" + deletebook + "\"";
 
-    if (confirm('Are you sure you want to delete '+ deletebook + ' from your local storage ?')) {
+    if (deletebook) {
+        if (confirm('Are you sure you want to delete ' + deletebook + ' from your local storage ?')) {
 
-        for (let i = 0; i < before; i++) {
-            if (localStorage.getItem(key[i]) == deadbook) {
-                localStorage.removeItem(deadbook);
+            if (localStorage.getItem(deletebook)) {
+                localStorage.removeItem(deletebook);
                 if (localStorage.length == before) {
-                    alert("Something went wrong, try again!");
-                    break;
+                    alert("Error, book was not deleted from local storage");
                 } else {
                     alert("Book successfully deleted!");
-                    break;
                 }
             }
-            
+            alert('Book was not found in local storage.')
+
+        } else {
+            alert("Action canceled, the book is still in the local storage!");
         }
 
-        alert('Book was not found in local storage.')
-
     } else {
-        alert("Action canceled, the book is still in the local storage!");
+        alert("No book name entered.");
     }
-
 }
