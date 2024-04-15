@@ -59,32 +59,29 @@ function handleFileLoad(event) {
 
 function saveFile() {
     console.log(dataBook)
-    var nameLocalStorage = prompt('Please enter book name so it can be stored and retrieved easily');
-    if (nameLocalStorage) {
-        localStorage.setItem(nameLocalStorage, dataBook);
-        if (localStorage.getItem(nameLocalStorage)){
-            alert('Book succesfully added to local storage');
-        } else {
-            alert('Error saving book.');
-        }
+    var bookName = ' book ' + (localStorage.length + 1);
+    localStorage.setItem(bookName, dataBook);
+    if (localStorage.getItem(bookName)) {
+        alert('Book succesfully added to local storage as:' + bookName);
     } else {
-        alert('error, no name was entered');
+        alert('Error saving book.');
     }
 }
 
 function showData() {
-    var values = [],
-        keys = Object.keys(localStorage),
-        i = keys.length;
+    var bookInfo = [],
+        books = Object.keys(localStorage),
+        i = books.length;
     if (i == 0) {
         alert('There is nothing in the local storage')
-    } else if (i > 0) {
+    } else {
         while (i--) {
-            values.push('book',i + 1,':');
-            values.push(localStorage.getItem(keys[i]));
-            values.push('\n')
+            bookInfo.push('book' + (i + 1) + ':');
+            bookInfo.push('<br>');
+            bookInfo.push(localStorage.getItem(books[i]));
+            bookInfo.push('<br>');
         }
-        document.getElementById('bookBox').textContent = values;
+        document.getElementById('bookBox').innerHTML = bookInfo.join('');
     }
 }
 
@@ -97,6 +94,7 @@ function deleteData(){
         localStorage.clear();
         if (localStorage.length == 0) {
             alert("Local storage successfully cleared!");
+            clearData();
         } else {
             alert("Something went wrong, try again!");
         }
@@ -106,15 +104,21 @@ function deleteData(){
     }
 }
 function deleteBook() {
-    const deadbook = prompt('Which book would you like to delete?');
-    const before = localStorage.length();
-    if (confirm('Are you sure you want to delete', deadbook, 'from your local storage ?')) {
+    var deletebook = prompt('Which book would you like to delete?');
+    if (!deletebook) {
+        alert("No book name entered.");
+    }
+    var before = localStorage.length;
+    var deadbook = "\"" + deletebook + "\"";
+
+    if (confirm('Are you sure you want to delete '+ deletebook + ' from your local storage ?')) {
 
         for (let i = 0; i < before; i++) {
-            if (localStorage.getItem[i]== deadbook) {
+            if (localStorage.getItem(key[i]) == deadbook) {
                 localStorage.removeItem(deadbook);
-                if (localStorage.length() == before) {
+                if (localStorage.length == before) {
                     alert("Something went wrong, try again!");
+                    break;
                 } else {
                     alert("Book successfully deleted!");
                     break;
@@ -123,9 +127,10 @@ function deleteBook() {
             
         }
 
+        alert('Book was not found in local storage.')
 
     } else {
-        alert("Action canceled,", deadbook, " is still in the local storage!");
+        alert("Action canceled, the book is still in the local storage!");
     }
 
 }
