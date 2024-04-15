@@ -91,3 +91,41 @@ function showData() {
 function clearData() {
     document.getElementById('bookBox').textContent = '';
 }
+
+function deleteData(){
+    if (confirm('Are you sure you want to delete everything saved in your local storage?')) {
+        localStorage.clear();
+        if (localStorage.length == 0) {
+            alert("Local storage successfully cleared!");
+        } else {
+            alert("Something went wrong, try again!");
+        }
+
+    } else {
+        alert("Action canceled, Local storage preserved!");
+    }
+}
+function deleteBook() {
+    const deadbook = prompt('Which book would you like to delete?');
+    const before = localStorage.length();
+    if (confirm('Are you sure you want to delete', deadbook, 'from your local storage ?')) {
+
+        for (let i = 0; i < before; i++) {
+            if (localStorage.getItem[i]== deadbook) {
+                localStorage.removeItem(deadbook);
+                if (localStorage.length() == before) {
+                    alert("Something went wrong, try again!");
+                } else {
+                    alert("Book successfully deleted!");
+                    break;
+                }
+            }
+            
+        }
+
+
+    } else {
+        alert("Action canceled,", deadbook, " is still in the local storage!");
+    }
+
+}
