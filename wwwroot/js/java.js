@@ -50,18 +50,16 @@ function handleFileSelect(event) {
 
 let dataBook;
 function handleFileLoad(event) {
-    console.log("Event:", event);
-    console.log("Event Target:", event.target);
 
     const fileContent = event.target.result;
     document.getElementById('fileContent').textContent = fileContent;
     dataBook = fileContent;
-    console.log("dataBook"~, dataBook);
+    console.log("dataBook", dataBook);
 }
 
 function saveFile() {
     console.log(dataBook)
-    var nameLocalStorage = prompt('Please enter book name so it can be stored and retrieved easily', "Enter name here");
+    var nameLocalStorage = prompt('Please enter book name so it can be stored and retrieved easily');
     if (nameLocalStorage) {
         localStorage.setItem(nameLocalStorage, dataBook);
         if (localStorage.getItem(nameLocalStorage)){
@@ -70,6 +68,10 @@ function saveFile() {
             alert('Error saving book.');
         }
     } else {
-        alert('No name was entered');
+        alert('error, no name was entered');
     }
+}
+
+function showdata() {
+
 }
