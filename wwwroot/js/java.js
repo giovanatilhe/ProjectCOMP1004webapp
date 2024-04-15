@@ -38,7 +38,7 @@ const toggleTheme = (theme) => {
 }
 
 // reading json file 
-
+let event;
 function init() {
     document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
 }
@@ -49,7 +49,24 @@ function handleFileSelect(event) {
     reader.readAsText(event.target.files[0])
 }
 
+let dataBook;
 function handleFileLoad(event) {
     console.log(event);
     document.getElementById('fileContent').textContent = event.target.result;
+    dataBook = event.target.result;
+}
+
+function saveFile() {
+    console.log(dataBook)
+    var nameLocalStorage = prompt('Please enter book name so it can be stored and retrieved easily', "Enter name here");
+    if (nameLocalStorage) {
+        localStorage.setItem(nameLocalStorage, dataBook);
+        if (localStorage.getItem(nameLocalStorage)){
+            alert('Book succesfully added to local storage');
+        } else {
+            alert('Error saving book.');
+        }
+    } else {
+        alert('No name was entered');
+    }
 }
