@@ -62,12 +62,21 @@ const bookNameArray = [];
 function saveFile() {
     console.log(dataBook)
     var bookName = prompt("Please write the name of the book so it can be organised and retrieved easily")
-    var length = bookName.length + 1;
-    for (let i = 0; 1 < length; i++) {
-        if (bookNameArray[i] === null) {
-            bookNameArray[i] = bookName;
+
+    if (bookNameArray.length == 0) {
+        bookNameArray.push(bookName);
+    } else {
+        if (bookNameArray.indexOf(bookName) !== -1) {
+            if (confirm('This books is already in the local storage, are you sure you want to add it again?')) {
+                bookNameArray.push(bookName + 1);
+            } else {
+                alert('Book not added to local storage');
+            }
+        } else {
+            bookNameArray.push(bookName);
         }
-    }
+    } 
+
     localStorage.setItem(bookName, dataBook);
     if (localStorage.getItem(bookName)) {
         alert('Book successfully added to local storage as:' + bookName);
@@ -85,6 +94,7 @@ function showData() {
     } else {
         while (i--) {
             bookInfo.push('book' + (i + 1) + ':');
+            bookNameArray[i];
             bookInfo.push('<br>');
             bookInfo.push(localStorage.getItem(books[i]));
             bookInfo.push('<br>');
@@ -131,8 +141,9 @@ var before = localStorage.length;
                 } else {
                     alert("Book successfully deleted!");
                 }
-            }
+            } else {
             alert('Book was not found in local storage.')
+            }
 
         } else {
             alert("Action canceled, the book is still in the local storage!");
