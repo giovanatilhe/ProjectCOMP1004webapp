@@ -62,13 +62,13 @@ const bookNameArray = [];
 function saveFile() {
     console.log(dataBook)
     var bookName = prompt("Please write the name of the book so it can be organised and retrieved easily")
-
     if (bookNameArray.length == 0) {
         bookNameArray.push(bookName);
     } else {
         if (bookNameArray.indexOf(bookName) !== -1) {
             if (confirm('This books is already in the local storage, are you sure you want to add it again?')) {
-                bookNameArray.push(bookName + 1);
+                bookName = bookName + '1';
+                bookNameArray.push(bookName);
             } else {
                 alert('Book not added to local storage');
             }
@@ -79,24 +79,42 @@ function saveFile() {
 
     localStorage.setItem(bookName, dataBook);
     if (localStorage.getItem(bookName)) {
-        alert('Book successfully added to local storage as:' + bookName);
+        alert('Book successfully added to local storage as: ' + bookName);
     } else {
         alert('Error saving book.');
     }
 }
+
+function cleanarray() {
+    while (bookNameArray.length > 0) {
+        bookNameArray.pop();
+    }
+    alert('array cleaned');
+}
+
+function displayarray() {
+    for (let i = 0; i < bookNameArray; i++) {
+        document.getElementById('bookBox').innerHTML = bookNameArray[i];
+
+    }
+    alert('done');
+}
+
+
+
 //displaying data from local storage
-function showData() {
-    var bookInfo = [],
+var bookInfo = [],
         books = Object.keys(localStorage),
-        i = books.length;
-    if (i == 0) {
+        hello = books.length;
+function showData() {
+    
+    if (hello == 0) {
         alert('There is nothing in the local storage')
     } else {
-        while (i--) {
-            bookInfo.push('book' + (i + 1) + ':');
-            bookNameArray[i];
+        while (hello--) {
+            bookInfo.push('book' + (hello + 1) + ':');
             bookInfo.push('<br>');
-            bookInfo.push(localStorage.getItem(books[i]));
+            bookInfo.push(localStorage.getItem(books[hhelo]));
             bookInfo.push('<br>');
         }
         document.getElementById('bookBox').innerHTML = bookInfo.join('');
@@ -139,7 +157,9 @@ var before = localStorage.length;
                 if (localStorage.length == before) {
                     alert("Error, book was not deleted from local storage");
                 } else {
+                    bookNameArray.indexOf(deletebook);
                     alert("Book successfully deleted!");
+                    clearData();
                 }
             } else {
             alert('Book was not found in local storage.')
@@ -151,5 +171,131 @@ var before = localStorage.length;
 
     } else {
         alert("No book name entered.");
+    }
+}
+// getting data so the filter can be used and filtered
+function filterBook() {
+    for (let i = 0; i < localStorage.length; i++) {
+        const item = localStorage.getItem(books[i]);
+
+        var parts = item.split(',');
+        var filterBookName = bookNameArray[i];
+        for (let j = 0; j < parts.length; j++) {
+            if (j = 0) {
+                filterBookName.title;
+            } else if (j = 1) {
+                filterBookName.author;
+            } else if (j = 2) {
+                filterBookName.began;
+            } else if (j = 3) {
+                filterBookName.finished;
+            } else if (j = 4) {
+                filterBookName.genre;
+            } else if (j = 5) {
+                filterBookName.status;
+            } else if (j = 6) {
+                filterBookName.language;
+            } else {
+                filterBookName.review;
+            }
+        }
+
+        if (document.getElementById("2")) {
+            //alphabet
+
+        } else if (document.getElementById("3")) {
+            //date read recent old
+
+        } else if (document.getElementById("4")) {
+            //date read old recent
+
+        } else if (document.getElementById("5")) {
+            //rated better worst
+
+        } else if (document.getElementById("6")) {
+            //rated worst better
+
+        } else if (document.getElementById("7")) {
+            //science fiction
+
+        } else if (document.getElementById("8")) {
+            //romance
+
+        } else if (document.getElementById("9")) {
+            //thriller
+
+        } else if (document.getElementById("10")) {
+            //mystery
+
+        } else if (document.getElementById("11")) {
+            //adventure
+
+        } else if (document.getElementById("12")) {
+            //young adult
+
+        } else if (document.getElementById("13")) {
+            //fantasy
+
+        } else if (document.getElementById("14")) {
+            //distopian
+
+        } else if (document.getElementById("15")) {
+            //horror
+
+        } else if (document.getElementById("16")) {
+            //biography
+
+        } else if (document.getElementById("17")) {
+            //self-hel
+
+        } else if (document.getElementById("18")) {
+            //history
+
+        } else if (document.getElementById("19")) {
+            //business and money
+
+        } else if (document.getElementById("20")) {
+            //read
+            if (filterBookName.status == 'read') {
+
+            }
+
+        } else if (document.getElementById("21")) {
+            //want to read
+
+        } else if (document.getElementById("22")) {
+            //english
+
+        } else if (document.getElementById("23")) {
+            //spanish
+
+        } else if (document.getElementById("24")) {
+            //german
+
+        } else if (document.getElementById("25")) {
+            //french
+
+        } else if (document.getElementById("26")) {
+            //portuguese
+
+        } else if (document.getElementById("27")) {
+            //mandarin
+
+        } else if (document.getElementById("28")) {
+            //rated 5 stars
+
+        } else if (document.getElementById("29")) {
+            //rated 4 stars
+
+        } else if (document.getElementById("30")) {
+            //rated 3 stars
+
+        } else if (document.getElementById("31")) {
+            //rated 2 stars
+
+        } else if (document.getElementById("32")) {
+            //rated 1 star
+
+        }
     }
 }

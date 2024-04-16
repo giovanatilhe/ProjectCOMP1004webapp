@@ -85,6 +85,12 @@
 
             </p>
 
+            <p>
+                array
+                <input type="button" onclick="cleanarray()" />
+                <input type="button" onclick="displayarray()" />
+            </p>
+
             <script src="js/java.js"></script>
         </div>
 
@@ -101,40 +107,39 @@
             <h2 style="background-color: #F6D6D8">Filtering:</h2>
             <p>This is where you can choose the filters to look for specific books in your collections</p>
             <input type="text" placeholder="Search in library..." />
-            <select>
-                <option> all books (no filter) </option>
-                <option> author </option>
-                <option> alphabetically </option>
-                <option> date read (recent to oldest)</option>
-                <option> date read (oldest to newest)</option>
-                <option> rated (better to worst) </option>
-                <option> rated (worst to better </option>
-                <option> science fiction </option>
-                <option> romance </option>
-                <option> thriller </option>
-                <option> mystery </option>
-                <option> adventure </option>
-                <option> young adult </option>
-                <option> fantasy </option>
-                <option> dystopian </option>
-                <option> horror </option>
-                <option> biography </option>
-                <option> self-help </option>
-                <option> history </option>
-                <option> businees & money </option>
-                <option> read </option>
-                <option> want to read </option>
-                <option> english </option>
-                <option> spanish </option>
-                <option> german </option>
-                <option> french </option>
-                <option> portuguese </option>
-                <option> mandarin </option>
-                <option> rated: ☆☆☆☆☆</option>
-                <option> rated: ☆☆☆☆</option>
-                <option> rated: ☆☆☆</option>
-                <option> rated: ☆☆</option>
-                <option> rated: ☆</option>
+            <select onchange="filterBook()" id="filter">
+                <option selected disabled hidden> books </option>
+                <option id="2"> alphabetically </option>
+                <option id="3"> date read (recent to oldest)</option>
+                <option id="4"> date read (oldest to newest)</option>
+                <option id="5"> rated (better to worst) </option>
+                <option id="6"> rated (worst to better </option>
+                <option id="7"> science fiction </option>
+                <option id="8"> romance </option>
+                <option id="9"> thriller </option>
+                <option id="10"> mystery </option>
+                <option id="11"> adventure </option>
+                <option id="12"> young adult </option>
+                <option id="13"> fantasy </option>
+                <option id="14"> dystopian </option>
+                <option id="15"> horror </option>
+                <option id="16"> biography </option>
+                <option id="17"> self-help </option>
+                <option id="18"> history </option>
+                <option id="19"> businees & money </option>
+                <option id="20"> read </option>
+                <option id="21"> want to read </option>
+                <option id="22"> english </option>
+                <option id="23"> spanish </option>
+                <option id="24"> german </option>
+                <option id="25"> french </option>
+                <option id="26"> portuguese </option>
+                <option id="27"> mandarin </option>
+                <option id="28"> rated: ☆☆☆☆☆</option>
+                <option id="29"> rated: ☆☆☆☆</option>
+                <option id="30"> rated: ☆☆☆</option>
+                <option id="31"> rated: ☆☆</option>
+                <option id="32"> rated: ☆</option>
             </select>
 
             <input style="background-color: #F6D6D8" type="button" onclick="showData()" value="Show all the books that have been uploaded" />
