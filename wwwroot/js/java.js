@@ -2,8 +2,8 @@
 var dataToSave = {
     "book_title": "Enter book title",
     "author": "Enter author's name",
-    "started_reading_on": "Enter date that you started reading on (format: DD/MM/YYYY)",
-    "finished_reading_on": "Enter date that you finished reading on (format: DD/MM/YYYY)",
+    "started_reading_on": "Enter date that you started reading on (format: YYYY-MM-DD)",
+    "finished_reading_on": "Enter date that you finished reading on (format: YYYY-MM-DD)",
     "genre": "Enter the genre of the book",
     "rating": "Enter your rating for this book (format: ***** [5 max])",
     "status": "Enter read or want to read",
@@ -176,6 +176,7 @@ var before = localStorage.length;
 // getting data so the filter can be used and filtered
 function filterBook() {
     var filteredBooks = [];
+    var extraFilter;
     for (let i = 0; i < localStorage.length; i++) {
         const item = localStorage.getItem(books[i]);
 
@@ -202,21 +203,37 @@ function filterBook() {
                 filterBookName.review;
             }
         }
+        if (document.getElementById("1")) {
+            //reverse alphabet
+            filteredBooks.push(filteredBookName.title);
+            extraFilter = 1;
 
-        if (document.getElementById("2")) {
+        } else if (document.getElementById("2")) {
             //alphabet
+            filteredBooks.push(filteredBookName.title);
+            extraFilter = 2;
 
         } else if (document.getElementById("3")) {
             //date read recent old
+            filteredBooks.push(filteredBookName.began);
+            filteredBooks.push(filteredBookName.finished);
+            extraFilter = 3;
 
         } else if (document.getElementById("4")) {
             //date read old recent
+            filteredBooks.push(filteredBookName.began);
+            filteredBooks.push(filteredBookName.finished);
+            extraFilter = 4;
 
         } else if (document.getElementById("5")) {
             //rated better worst
+            filteredBooks.push(filteredBookName.rating);
+            extraFilter = 5;
+
 
         } else if (document.getElementById("6")) {
             //rated worst better
+            filteredBooks.push(filteredBookName.rating);
 
         } else if (document.getElementById("7")) {
             //science fiction
@@ -401,6 +418,24 @@ function filterBook() {
             }
 
         }
+    }
+    if (extraFilter = 1) {
+        filteredBooks.sort();
+        filteredBooks.reverse();
+    } else if (extraFilter = 2) {
+        filteredBooks.sort()
+    } else if (extraFilter = 3) {
+        filteredBooks.sort((a, b) => a.date - b.date);
+
+    } else if (extraFilter = 4) {
+        filteredBooks.sort((a, b) => a.date - b.date);
+        filteredBooks.reverse();
+    } else if (extraFilter = 5) {
+        filsteredBooks.sort((a, b) => a.length - b.length);
+    } else if (extraFilter = 6) {
+        filsteredBooks.sort((a, b) => a.length - b.length);
+        filteredBooks.reverse();
+
     }
     document.getElementById('bookBox').innerHTML = filteredBooks.join('');
 
