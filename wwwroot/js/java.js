@@ -175,6 +175,7 @@ var before = localStorage.length;
 }
 // getting data so the filter can be used and filtered
 function filterBook() {
+    var filteredBooks = [];
     for (let i = 0; i < localStorage.length; i++) {
         const item = localStorage.getItem(books[i]);
 
@@ -192,8 +193,10 @@ function filterBook() {
             } else if (j = 4) {
                 filterBookName.genre;
             } else if (j = 5) {
-                filterBookName.status;
+                filterBookName.rating;
             } else if (j = 6) {
+                filterBookName.status;
+            } else if (j = 7) {
                 filterBookName.language;
             } else {
                 filterBookName.review;
@@ -217,85 +220,188 @@ function filterBook() {
 
         } else if (document.getElementById("7")) {
             //science fiction
+            if (filterBookName.genre == 'science fiction') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("8")) {
             //romance
+            if (filterBookName.genre == 'romance') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("9")) {
             //thriller
+            if (filterBookName.genre == 'thriller') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("10")) {
             //mystery
+            if (filterBookName.genre == 'mystery') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("11")) {
             //adventure
+            if (filterBookName.genre == 'adventure') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("12")) {
             //young adult
+            if (filterBookName.genre == ('young adult' || 'ya')) {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("13")) {
             //fantasy
+            if (filterBookName.genre == 'fantasy') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("14")) {
-            //distopian
+            //dystopia
+            if (filterBookName.genre == 'dystopia') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("15")) {
             //horror
+            if (filterBookName.genre == 'horror') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("16")) {
             //biography
+            if (filterBookName.genre == 'biography') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("17")) {
-            //self-hel
+            //self-help
+            if (filterBookName.genre == 'self-help') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("18")) {
             //history
+            if (filterBookName.genre == 'history') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("19")) {
-            //business and money
+            //business
+            if (filterBookName.genre == 'business') {
+                filteredBooks.push(filteredBookName.genre);
+
+            }
 
         } else if (document.getElementById("20")) {
             //read
             if (filterBookName.status == 'read') {
+                filteredBooks.push(filteredBookName.status);
 
             }
 
         } else if (document.getElementById("21")) {
             //want to read
+            if (filterBookName.status == 'want to read') {
+                filteredBooks.push(filteredBookName.status);
+
+            }
 
         } else if (document.getElementById("22")) {
             //english
+            if (filterBookName.language == 'english') {
+                filteredBooks.push(filteredBookName.language);
+
+            }
 
         } else if (document.getElementById("23")) {
             //spanish
+            if (filterBookName.language == 'spanish') {
+                filteredBooks.push(filteredBookName.language);
+
+            }
 
         } else if (document.getElementById("24")) {
             //german
+            if (filterBookName.language == 'german') {
+                filteredBooks.push(filteredBookName.language);
+
+            }
 
         } else if (document.getElementById("25")) {
             //french
+            if (filterBookName.language == 'french') {
+                filteredBooks.push(filteredBookName.language);
+
+            }
 
         } else if (document.getElementById("26")) {
             //portuguese
+            if (filterBookName.language == 'portuguese') {
+                filteredBooks.push(filteredBookName.language);
+
+            }
 
         } else if (document.getElementById("27")) {
             //mandarin
+            if (filterBookName.language == 'mandarin') {
+                filteredBooks.push(filteredBookName.language);
+
+            }
 
         } else if (document.getElementById("28")) {
             //rated 5 stars
+            if (filterBookName.rating == '*****') {
+                filteredBooks.push(filteredBookName.rating);
+
+            }
 
         } else if (document.getElementById("29")) {
             //rated 4 stars
+            if (filterBookName.rating == '****') {
+                filteredBooks.push(filteredBookName.rating);
+
+            }
 
         } else if (document.getElementById("30")) {
             //rated 3 stars
+            if (filterBookName.rating == '***') {
+                filteredBooks.push(filteredBookName.rating);
+
+            }
 
         } else if (document.getElementById("31")) {
             //rated 2 stars
+            if (filterBookName.rating == '**') {
+                filteredBooks.push(filteredBookName.rating);
+
+            }
 
         } else if (document.getElementById("32")) {
             //rated 1 star
+            if (filterBookName.rating == '*') {
+                filteredBooks.push(filteredBookName.rating);
+
+            }
 
         }
     }
+    document.getElementById('bookBox').innerHTML = filteredBooks.join('');
+
 }
