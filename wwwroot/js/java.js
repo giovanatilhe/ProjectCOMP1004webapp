@@ -175,240 +175,128 @@ var before = localStorage.length;
 }
 // getting data so the filter can be used and filtered
 function filterBook() {
-    var filteredBooks = [];
-    var extraFilter;
-    const selectElement = document.getElementById('filter');
-    const selectedFilter = selectElement.value;
+    const books = [];
     for (let i = 0; i < localStorage.length; i++) {
-        const item = localStorage.getItem(books[i]);
+        const key = localStorage.key(i);
 
-        var parts = item.split(',');
-        var filterBookName = bookNameArray[i];
-        filterBookName.title = parts[0];
-        filterBookName.author = parts[1];
-        filterBookName.began = parts[2];
-        filterBookName.finished = parts[3];
-        filterBookName.genre = parts[4];
-        filterBookName.rating = parts[5];
-        filterBookName.status = parts[6];
-        filterBookName.language = parts[7];
-        filterBookName.review = parts.slice(8).join(', ');
+        const value = localStorage.getItem(key);
 
-
-        switch (selectedFilter) {
-            case 1:
-                //reverse alphabet
-                filteredBooks.push(filteredBookName.title);
-                filteredBooks.sort();
-                filteredBooks.reverse();
-                break;
-            case 2:
-                //alphabet
-                filteredBooks.push(filteredBookName.title);
-                filteredBooks.sort()
-
-                break;
-            case 3:
-                //date read recent old
-                filteredBooks.push(filteredBookName.began);
-                filteredBooks.sort((a, b) => a.date - b.date);
-                break;
-            case 4:
-                //date read old recent
-                filteredBooks.push(filteredBookName.began);
-                filteredBooks.sort((a, b) => a.date - b.date);
-                filteredBooks.reverse();
-
-                break;
-            case 5:
-                //rated better worst
-                filteredBooks.push(filteredBookName.rating);
-                filsteredBooks.sort((a, b) => a.length - b.length);
-
-                break;
-            case 6:
-                //rated worst better
-                filteredBooks.push(filteredBookName.rating);
-                filsteredBooks.sort((a, b) => a.length - b.length);
-                filteredBooks.reverse();
-                break;
-            case 7:
-                //science fiction
-                if (filterBookName.genre == 'science fiction') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-            case 8:
-                //romance
-                if (filterBookName.genre == 'romance') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-            case 9:
-                //thriller
-                if (filterBookName.genre == 'thriller') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-
-            case 10:
-                //mystery
-                if (filterBookName.genre == 'mystery') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-
-            case 11:
-                //adventure
-                if (filterBookName.genre == 'adventure') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-            case 12:
-                //young adult
-                if (filterBookName.genre == 'young adult') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-            case 13:
-                //fantasy
-                if (filterBookName.genre == 'fantasy') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-
-            case 14:
-                //dystopian
-                if (filterBookName.genre == 'dystopian') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-            case 15:
-                //horror
-                if (filterBookName.genre == 'horror') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-
-            case 16:
-                //biography
-                if (filterBookName.genre == 'biography') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-            case 17:
-                //self-help
-                if (filterBookName.genre == 'self-help') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-            case 18:
-                //history
-                if (filterBookName.genre == 'history') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-
-            case 19:
-                //business
-                if (filterBookName.genre == 'business') {
-                    filteredBooks.push(filteredBookName.genre);
-                }
-                break;
-            case 20:
-                //read
-                if (filterBookName.status == 'read') {
-                    filteredBooks.push(filteredBookName.status);
-
-                }
-                break;
-            case 21:
-                //want to read
-                if (filterBookName.status == 'want to read') {
-                    filteredBooks.push(filteredBookName.status);
-                }
-                break;
-            case 22:
-                //english
-                if (filterBookName.language == 'english') {
-                    filteredBooks.push(filteredBookName.language);
-
-                }
-                break;
-            case 23:
-                //spanish
-                if (filterBookName.language == 'spanish') {
-                    filteredBooks.push(filteredBookName.language);
-
-                }
-                break;
-            case 24:
-                //german
-                if (filterBookName.language == 'german') {
-                    filteredBooks.push(filteredBookName.language);
-
-                }
-                break;
-            case 25:
-                //french
-                if (filterBookName.language == 'french') {
-                    filteredBooks.push(filteredBookName.language);
-
-                }
-                break;
-            case 26:
-                //portuguese
-                if (filterBookName.language == 'portuguese') {
-                    filteredBooks.push(filteredBookName.language);
-
-                }
-                break;
-            case 27:
-                //mandarin
-                if (filterBookName.language == 'mandarin') {
-                    filteredBooks.push(filteredBookName.language);
-
-                }
-                break;
-            case 28:
-                //rated 5 stars
-                if (filterBookName.rating == '*****') {
-                    filteredBooks.push(filteredBookName.rating);
-
-                }
-                break;
-            case 29:
-                //rated 4 stars
-                if (filterBookName.rating == '****') {
-                    filteredBooks.push(filteredBookName.rating);
-
-                }
-                break;
-            case 30:
-                //rated 3 stars
-                if (filterBookName.rating == '***') {
-                    filteredBooks.push(filteredBookName.rating);
-
-                }
-                break;
-            case 31:
-                //rated 2 stars
-                if (filterBookName.rating == '**') {
-                    filteredBooks.push(filteredBookName.rating);
-
-                }
-                break;
-            case 32:
-                //rated 1 star
-                if (filterBookName.rating == '*') {
-                    filteredBooks.push(filteredBookName.rating);
-
-                }
-                break;
-        }
-        
+        var parts = value.split(',');
+        books.push({
+            title: parts[0],
+            author: parts[1],
+            began: new Date(parts[2]),
+            finished: new Date(parts[3]),
+            genre: parts[4],
+            rating: parts[5],
+            status: parts[6],
+            language: parts[7],
+            review: parts.slice(8).join(', ')
+        });
+       
     }
 
+    const selectElement = document.getElementById('filter');
+    let filteredBooks = []
+    const selectedFilter = selectElement.value;
+    switch (selectedFilter) {
+        case 1:
+            filteredBooks = books.sort((a, b) => b.title.localeCompare(a.title));
+            break;
+        case 2:
+            filteredBooks = books.sort((a, b) => a.title.localeCompare(b.title));
+            break;
+        case 3:
+            filteredBooks = books.sort((a, b) => b.began - a.began);
+            break;
+        case 4:
+            filteredBooks = books.sort((a, b) => a.began - b.began);
+            break;
+        case 5:
+            filteredBooks = books.sort((a, b) => b.rating.localeCompare(a.rating));
+            break;
+        case 6:
+            filteredBooks = books.sort((a, b) => a.rating.localeCompare(b.rating));
+            break;
+        case 7:
+            filteredBooks = books.filter(book => book.genre === 'science fiction');
+            break;
+        case 8:
+            filteredBooks = books.filter(book => book.genre === 'romance');
+            break;
+        case 9:
+            filteredBooks = books.filter(book => book.genre === 'thriller');
+            break;
+        case 10:
+            filteredBooks = books.filter(book => book.genre === 'mystery');
+            break;
+        case 11:
+            filteredBooks = books.filter(book => book.genre === 'adventure');
+            break;
+        case 12:
+            filteredBooks = books.filter(book => book.genre === 'young adult');
+            break;
+        case 13:
+            filteredBooks = books.filter(book => book.genre === 'fantasy');
+            break;
+        case 14:
+            filteredBooks = books.filter(book => book.genre === 'dystopian');
+            break;
+        case 15:
+            filteredBooks = books.filter(book => book.genre === 'horror');
+            break;
+        case 16:
+            filteredBooks = books.filter(book => book.genre === 'biography');
+            break;
+        case 17:
+            filteredBooks = books.filter(book => book.genre === 'self-help');
+            break;
+        case 18:
+            filteredBooks = books.filter(book => book.genre === 'history');
+            break;
+        case 19:
+            filteredBooks = books.filter(book => book.genre === 'business');
+            break;
+        case 20:
+            filteredBooks = books.filter(book => book.status === 'read');
+            break;
+        case 21:
+            filteredBooks = books.filter(book => book.status === 'want to read');
+            break;
+        case 22:
+            filteredBooks = books.filter(book => book.language === 'english');
+            break;
+        case 23:
+            filteredBooks = books.filter(book => book.language === 'spanish');
+            break;
+        case 24:
+            filteredBooks = books.filter(book => book.language === 'german');
+            break;
+        case 25:
+            filteredBooks = books.filter(book => book.language === 'french');
+            break;
+        case 26:
+            filteredBooks = books.filter(book => book.language === 'portuguese');
+            break;
+        case 27:
+            filteredBooks = books.filter(book => book.language === 'mandarin');
+            break;
+        case 28:
+            filteredBooks = books.filter(book => book.rating === '*****');
+            break;
+        case 29:
+            filteredBooks = books.filter(book => book.rating === '****');
+            break;
+        case 30:
+            filteredBooks = books.filter(book => book.rating === '***');
+            break;
+        case 31:
+            filteredBooks = books.filter(book => book.rating === '**');
+            break;
+        case 32:
+            filteredBooks = books.filter(book => book.rating === '*');
+            break;
+    }
     document.getElementById('bookBox').innerHTML = filteredBooks.join('');
 
 }
