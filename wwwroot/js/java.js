@@ -160,7 +160,9 @@ var before = localStorage.length;
     }
 }
 // getting data so the filter can be used and filtered
+let filteredBooks = [];
 function filterBook() {
+    console.log('filterBook is called');
     const books = [];
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
@@ -187,15 +189,16 @@ function filterBook() {
     }
     
     const selectElement = document.getElementById('filter');
-    let filteredBooks = []
-    const selectedFilter = selectElement.value;
+    
+    const selectedFilter = parseInt(selectElement.value, 10);
     switch (selectedFilter) {
         case 1:
             filteredBooks = books.sort((a, b) => b.title.localeCompare(a.title));
+            console.log('cases', filteredBooks);
             handlingCase();
             break;
         case 2:
-            filteredBooks = books.sort((a, b) => a.title.localeCompare(b.title));
+            filteredBooks = books.sort((a, b) => a.title.localeCompare(a.title));
             handlingCase();
             break;
         case 3:
@@ -318,13 +321,30 @@ function filterBook() {
             filteredBooks = books.filter(book => book.rating === ' *');
             handlingCase();
             break;
+        case 33:
+            clearData();
+            break;
     }
 
 }
 function handlingCase() {
-    document.getElementById('bookBox').innerHTML = filteredBooks.join('');
-    while (bookNameArray.length > 0) {
-        filteredBooks.pop();
-    }
-
+    console.log('handlingCase is called');
+    const bookBox = document.getElementById('bookBox');
+    bookBox.innerHTML = filteredBooks.map(book => {
+        return `<div>
+                    <h3>Title: ${book.title}</h3>
+                    <p>Author: ${book.author}</p>
+                    <p>Began Reading: ${book.began.toDateString()}</p>
+                    <p>Finished Reading: ${book.finished.toDateString()}</p>
+                    <p>Genre: ${book.genre}</p>
+                    <p>Rating: ${book.rating}</p>
+                    <p>Status: ${book.status}</p>
+                    <p>Language: ${book.language}</p>
+                    <p>Review: ${book.review}</p>
+                </div>`;
+    }).join('');
+    filteredBooks.length = 0;
 }
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('filter').addEventListener('change', filterBook);
+});
