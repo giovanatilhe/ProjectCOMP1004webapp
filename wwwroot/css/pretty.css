@@ -14,3 +14,7 @@ html[data-theme='dark'] img {
     width: 100%;
     min-height: 200px;
 }
+.footer{
+    color: black;
+    min-height: 20px;
+}
