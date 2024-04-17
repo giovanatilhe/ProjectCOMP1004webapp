@@ -10,3 +10,7 @@ html[data-theme='dark'] img {
     filter: invert(1) hue-rotate(180deg)
 }
 
+.bookBox {
+    width: 100%;
+    min-height: 200px;
+}

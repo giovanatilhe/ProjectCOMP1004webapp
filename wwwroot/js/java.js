@@ -85,26 +85,9 @@ function saveFile() {
     }
 }
 
-function cleanarray() {
-    while (bookNameArray.length > 0) {
-        bookNameArray.pop();
-    }
-    alert('array cleaned');
-}
-
-function displayarray() {
-    for (let i = 0; i < bookNameArray; i++) {
-        document.getElementById('bookBox').innerHTML = bookNameArray[i];
-
-    }
-    alert('done');
-}
-
-
-
 //displaying data from local storage
-var bookInfo = [],
-        books = Object.keys(localStorage),
+var bookInfo = [];
+books = Object.keys(localStorage);
         hello = books.length;
 function showData() {
     
@@ -129,6 +112,9 @@ function deleteData(){
     if (confirm('Are you sure you want to delete everything saved in your local storage?')) {
         localStorage.clear();
         if (localStorage.length == 0) {
+            while (bookNameArray.length > 0) {
+                bookNameArray.pop();
+            }
             alert("Local storage successfully cleared!");
             clearData();
         } else {
@@ -177,11 +163,15 @@ var before = localStorage.length;
 function filterBook() {
     const books = [];
     for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
+        let key = localStorage.key(i);
 
-        const value = localStorage.getItem(key);
+        let value = localStorage.getItem(key);
+        value = value.replace(/[{}"':]|\b(?:book_title|started_reading_on|finished_reading_on|genre|rating|status|language|review)\b|\s*\r?\n\s*/g, '');
 
-        var parts = value.split(',');
+        console.log('value', value);
+
+        let parts = value.split(',');
+        parts = parts.map(part => part.replace(/,\s*/g, ''));
         books.push({
             title: parts[0],
             author: parts[1],
@@ -193,110 +183,148 @@ function filterBook() {
             language: parts[7],
             review: parts.slice(8).join(', ')
         });
-       
+       console.log('books', books);
     }
-
+    
     const selectElement = document.getElementById('filter');
     let filteredBooks = []
     const selectedFilter = selectElement.value;
     switch (selectedFilter) {
         case 1:
             filteredBooks = books.sort((a, b) => b.title.localeCompare(a.title));
+            handlingCase();
             break;
         case 2:
             filteredBooks = books.sort((a, b) => a.title.localeCompare(b.title));
+            handlingCase();
             break;
         case 3:
             filteredBooks = books.sort((a, b) => b.began - a.began);
+            handlingCase();
             break;
         case 4:
             filteredBooks = books.sort((a, b) => a.began - b.began);
+            handlingCase();
             break;
         case 5:
             filteredBooks = books.sort((a, b) => b.rating.localeCompare(a.rating));
+            handlingCase();
             break;
         case 6:
             filteredBooks = books.sort((a, b) => a.rating.localeCompare(b.rating));
+            handlingCase();
             break;
         case 7:
-            filteredBooks = books.filter(book => book.genre === 'science fiction');
+            filteredBooks = books.filter(book => book.genre === ' science fiction');
+            handlingCase();
             break;
         case 8:
-            filteredBooks = books.filter(book => book.genre === 'romance');
+            filteredBooks = books.filter(book => book.genre === ' romance');
+            handlingCase();
             break;
         case 9:
-            filteredBooks = books.filter(book => book.genre === 'thriller');
+            filteredBooks = books.filter(book => book.genre === ' thriller');
+            handlingCase();
             break;
         case 10:
-            filteredBooks = books.filter(book => book.genre === 'mystery');
+            filteredBooks = books.filter(book => book.genre === ' mystery');
+            handlingCase();
             break;
         case 11:
-            filteredBooks = books.filter(book => book.genre === 'adventure');
+            filteredBooks = books.filter(book => book.genre === ' adventure');
+            handlingCase();
             break;
         case 12:
-            filteredBooks = books.filter(book => book.genre === 'young adult');
+            filteredBooks = books.filter(book => book.genre === ' young adult');
+            handlingCase();
             break;
         case 13:
-            filteredBooks = books.filter(book => book.genre === 'fantasy');
+            filteredBooks = books.filter(book => book.genre === ' fantasy');
+            handlingCase();
             break;
         case 14:
-            filteredBooks = books.filter(book => book.genre === 'dystopian');
+            filteredBooks = books.filter(book => book.genre === ' dystopian');
+            handlingCase();
             break;
         case 15:
-            filteredBooks = books.filter(book => book.genre === 'horror');
+            filteredBooks = books.filter(book => book.genre === ' horror');
+            handlingCase();
             break;
         case 16:
-            filteredBooks = books.filter(book => book.genre === 'biography');
+            filteredBooks = books.filter(book => book.genre === ' biography');
+            handlingCase();
             break;
         case 17:
-            filteredBooks = books.filter(book => book.genre === 'self-help');
+            filteredBooks = books.filter(book => book.genre === ' self-help');
+            handlingCase();
             break;
         case 18:
-            filteredBooks = books.filter(book => book.genre === 'history');
+            filteredBooks = books.filter(book => book.genre === ' history');
+            handlingCase();
             break;
         case 19:
-            filteredBooks = books.filter(book => book.genre === 'business');
+            filteredBooks = books.filter(book => book.genre === ' business');
+            handlingCase();
             break;
         case 20:
-            filteredBooks = books.filter(book => book.status === 'read');
+            filteredBooks = books.filter(book => book.status === ' read');
+            handlingCase();
             break;
         case 21:
-            filteredBooks = books.filter(book => book.status === 'want to read');
+            filteredBooks = books.filter(book => book.status === ' want to read');
+            handlingCase();
             break;
         case 22:
-            filteredBooks = books.filter(book => book.language === 'english');
+            filteredBooks = books.filter(book => book.language === ' english');
+            handlingCase();
             break;
         case 23:
-            filteredBooks = books.filter(book => book.language === 'spanish');
+            filteredBooks = books.filter(book => book.language === ' spanish');
+            handlingCase();
             break;
         case 24:
-            filteredBooks = books.filter(book => book.language === 'german');
+            filteredBooks = books.filter(book => book.language === ' german');
+            handlingCase();
             break;
         case 25:
-            filteredBooks = books.filter(book => book.language === 'french');
+            filteredBooks = books.filter(book => book.language === ' french');
+            handlingCase();
             break;
         case 26:
-            filteredBooks = books.filter(book => book.language === 'portuguese');
+            filteredBooks = books.filter(book => book.language === ' portuguese');
+            handlingCase();
             break;
         case 27:
-            filteredBooks = books.filter(book => book.language === 'mandarin');
+            filteredBooks = books.filter(book => book.language === ' mandarin');
+            handlingCase();
             break;
         case 28:
-            filteredBooks = books.filter(book => book.rating === '*****');
+            filteredBooks = books.filter(book => book.rating === ' *****');
+            handlingCase();
             break;
         case 29:
-            filteredBooks = books.filter(book => book.rating === '****');
+            filteredBooks = books.filter(book => book.rating === ' ****');
+            handlingCase();
             break;
         case 30:
-            filteredBooks = books.filter(book => book.rating === '***');
+            filteredBooks = books.filter(book => book.rating === ' ***');
+            handlingCase();
             break;
         case 31:
-            filteredBooks = books.filter(book => book.rating === '**');
+            filteredBooks = books.filter(book => book.rating === ' **');
+            handlingCase();
             break;
         case 32:
-            filteredBooks = books.filter(book => book.rating === '*');
+            filteredBooks = books.filter(book => book.rating === ' *');
+            handlingCase();
             break;
     }
+
+}
+function handlingCase() {
     document.getElementById('bookBox').innerHTML = filteredBooks.join('');
+    while (bookNameArray.length > 0) {
+        filteredBooks.pop();
+    }
 
 }
