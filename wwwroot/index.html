@@ -1,6 +1,9 @@
 ﻿<!DOCTYPE html>
 <html lang="en" data- theme="light">
+
 <head>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Book Sorter</title>
     <link rel="stylesheet" href="css/pretty.css" />
     <style>
@@ -12,21 +15,21 @@
         }
 
         .container {
-            width: 100%; 
-            display: flex; 
+            width: 100%;
+            display: flex;
             background-color: white;
         }
 
         .sidebar {
-            width: 20%; 
+            width: 20%;
             background-color: #E4DDD8;
             height: 500vh;
             padding: 20px;
         }
 
         .main {
-            width: 80%; 
-            padding: 20px; 
+            width: 80%;
+            padding: 20px;
         }
 
         .bookBox {
@@ -37,7 +40,6 @@
             padding: 10px;
             margin: 20px;
         }
-
     </style>
 </head>
 <body onload="init()">
@@ -97,7 +99,8 @@
 
             <h2 style="background-color: #F6D6D8">Filtering:</h2>
             <p>This is where you can choose the filters to look for specific books in your collections</p>
-            <input type="text" placeholder="Search in library..." />
+            <input id="searchbar" onkeyup="search_book()" type="text" placeholder="Search in library..." />
+
             <select onchange="filterBook()" id="filter">
                 <option value="1"> reverse alphabetical </option>
                 <option value="2"> alphabetically </option>

@@ -85,24 +85,7 @@ function saveFile() {
     }
 }
 
-//displaying data from local storage
-var bookInfo = [];
-books = Object.keys(localStorage);
-        hello = books.length;
-function showData() {
-    
-    if (hello == 0) {
-        alert('There is nothing in the local storage')
-    } else {
-        while (hello--) {
-            bookInfo.push('book' + (hello + 1) + ':');
-            bookInfo.push('<br>');
-            bookInfo.push(localStorage.getItem(books[hello]));
-            bookInfo.push('<br>');
-        }
-        document.getElementById('bookBox').innerHTML = bookInfo.join('');
-    }
-}
+
 //clearing display
 function clearData() {
     document.getElementById('bookBox').textContent = '';
@@ -161,9 +144,10 @@ var before = localStorage.length;
 }
 // getting data so the filter can be used and filtered
 let filteredBooks = [];
-function filterBook() {
-    console.log('filterBook is called');
-    const books = [];
+const books = [];
+
+function getBookData() {
+    console.log('getBookData is called');
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
 
@@ -185,9 +169,12 @@ function filterBook() {
             language: parts[7],
             review: parts.slice(8).join(', ')
         });
-       console.log('books', books);
+        
     }
-    
+        return books;
+}
+function filterBook() {
+    getBookData()
     const selectElement = document.getElementById('filter');
     
     const selectedFilter = parseInt(selectElement.value, 10);
@@ -345,6 +332,54 @@ function handlingCase() {
     }).join('');
     filteredBooks.length = 0;
 }
+//search bar
+function search_book() {
+    getBookData();
+    let input = ' '+ document.getElementById('searchbar').value;
+    console.log('input', input);
+    const bookBox = document.getElementById('bookBox');
+
+
+    let bookTitles = books.map(book => book.title);  // This creates an array of titles from the books array.
+
+    let matchedBook = books.find(book => book.title === input);
+
+    if (matchedBook) {
+        bookBox.innerHTML = `<div>
+        <h3>Title: ${matchedBook.title}</h3>
+        <p>Author: ${matchedBook.author}</p>
+        <p>Began Reading: ${matchedBook.began.toDateString()}</p>
+        <p>Finished Reading: ${matchedBook.finished.toDateString()}</p>
+        <p>Genre: ${matchedBook.genre}</p>
+        <p>Rating: ${matchedBook.rating}</p>
+        <p>Status: ${matchedBook.status}</p>
+        <p>Language: ${matchedBook.language}</p>
+        <p>Review: ${matchedBook.review}</p>
+    </div>`;
+    } else {
+        bookBox.innerHTML = "<p>No book found with that title.</p>";
+    }
+}
+
+//displaying data from local storage
+var bookInfo = [];
+booksDisplay = Object.keys(localStorage);
+hello = booksDisplay.length;
+function showData() {
+
+    if (hello == 0) {
+        alert('There is nothing in the local storage')
+    } else {
+        while (hello--) {
+            bookInfo.push('book' + (hello + 1) + ':');
+            bookInfo.push('<br>');
+            bookInfo.push(localStorage.getItem(booksDisplay[hello]));
+            bookInfo.push('<br>');
+        }
+        document.getElementById('bookBox').innerHTML = bookInfo.join('');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('filter').addEventListener('change', filterBook);
 });
