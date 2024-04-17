@@ -62,6 +62,9 @@ const bookNameArray = [];
 function saveFile() {
     console.log(dataBook)
     var bookName = prompt("Please write the name of the book so it can be organised and retrieved easily")
+    if (bookName === null) {
+        alert('No book title was found')
+    }
     if (bookNameArray.length == 0) {
         bookNameArray.push(bookName);
     } else {
@@ -74,15 +77,12 @@ function saveFile() {
             }
         } else {
             bookNameArray.push(bookName);
+            alert('Book successfully added to local storage as: ' + bookName);
+            localStorage.setItem(bookName, dataBook);
+
         }
     } 
 
-    localStorage.setItem(bookName, dataBook);
-    if (localStorage.getItem(bookName)) {
-        alert('Book successfully added to local storage as: ' + bookName);
-    } else {
-        alert('Error saving book.');
-    }
 }
 
 
